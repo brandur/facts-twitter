@@ -25,6 +25,7 @@ module Facts
     FILTERS = [
       Filters::HtmlEntities.new, 
       Filters::Markdown.new, 
+      Filters::Math.new, 
     ].freeze
 
     # Maximum content length before a URL, this is 140 (maximum length of a 
