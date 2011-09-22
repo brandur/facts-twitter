@@ -1,7 +1,7 @@
 facts-twitter
 =============
 
-A simple program that pulls a random fact from a Facts installation, and pushes it to Twitter. Provides an easy way to program a schedule for these pushes.
+A simple program that pulls a random fact from a Facts installation, and pushes it to Twitter. Provides an easy way to program a schedule for these pushes. See a sample of the running application at [@factsproject](http://twitter.com/factsproject).
 
 Setup
 -----
@@ -41,4 +41,4 @@ Run Whenever to get the corresponding Cron configuration:
 
     whenever
 
-Add the given configuration to your crontab using `crontab -e`.
+Add the printed configuration to your crontab using `crontab -e`.
