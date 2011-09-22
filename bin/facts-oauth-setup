@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+$: << File.expand_path('lib')
+
+require 'rubygems'
+require 'bundler'
+
+Bundler.require
+
+require 'facts'
+
+# Bootstrap configuration
+require_relative File.join('..', 'conf')
+
+Facts::Setup.new.run

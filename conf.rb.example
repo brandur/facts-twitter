@@ -1,0 +1,14 @@
+Facts::App.configure do |conf|
+  # Facts service from which to get random facts
+  conf.facts_uri          = 'http://facts.brandur.org'
+
+  # Application key and secret, get one by registering an application on 
+  # Twitter's developer site
+  conf.consumer_key       = nil
+  conf.consumer_secret    = nil
+
+  # OAuth for the user to post tweets under, get values by running 
+  # `bin/facts-oauth-setup`
+  conf.oauth_token        = nil
+  conf.oauth_token_secret = nil
+end

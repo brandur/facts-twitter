@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+$: << File.expand_path('lib')
+
+require 'rubygems'
+require 'bundler'
+
+Bundler.require
+
+require 'facts'
+
+# Bootstrap configuration
+require_relative File.join('..', 'conf')
+
+# Read Twitter configuration in from our own
+require 'twitter'
+Twitter.configure do |conf|
+  conf.consumer_key       = Facts::App.conf.consumer_key
+  conf.consumer_secret    = Facts::App.conf.consumer_secret
+  conf.oauth_token        = Facts::App.conf.oauth_token
+  conf.oauth_token_secret = Facts::App.conf.oauth_token_secret
+end
+
+Facts::Main.new.run
