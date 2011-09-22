@@ -10,7 +10,7 @@ Bundler.require
 require 'facts'
 
 # Bootstrap configuration
-require_relative File.join('..', 'conf')
+require_relative File.join('..', 'config', 'app')
 
 # Read Twitter configuration in from our own
 require 'twitter'
