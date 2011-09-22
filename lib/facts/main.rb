@@ -1,6 +1,8 @@
 module Facts
   class Main
     def run
+      App.conf_check :facts_uri, :oauth_token, :oauth_token_secret
+
       # Ask the configured Facts installation for a random fact
       uri = URI.parse("#{App.conf.facts_uri}/facts/daily.json")
       req = Net::HTTP::Get.new(uri.path)

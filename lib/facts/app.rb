@@ -16,9 +16,22 @@ module Facts
         @conf ||= Conf.new
       end
 
+      def conf_check(*confs)
+        confs.each do |conf|
+          raise ConfError.new(conf) unless App.conf.send(conf)
+        end
+      end
+
       def configure
         yield conf
       end
+    end
+  end
+
+  class ConfError < StandardError
+    attr_accessor :conf
+    def initialize(conf)
+      @conf = conf
     end
   end
 end

@@ -10,7 +10,12 @@ Bundler.require
 require 'facts'
 
 # Bootstrap configuration
-require_relative File.join('..', 'config', 'app')
+begin
+  require_relative File.join('..', 'config', 'app')
+rescue LoadError
+  $stderr.puts "no configuration file!"
+  exit(1)
+end
 
 # Read Twitter configuration in from our own
 require 'twitter'
@@ -21,4 +26,8 @@ Twitter.configure do |conf|
   conf.oauth_token_secret = Facts::App.conf.oauth_token_secret
 end
 
-Facts::Main.new.run
+begin
+  Facts::Main.new.run
+rescue Facts::ConfError => e
+  $stderr.puts "need configuration: #{e.conf}"
+end

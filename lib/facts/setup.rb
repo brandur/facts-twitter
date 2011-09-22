@@ -1,6 +1,8 @@
 module Facts
   class Setup
     def run
+      App.conf_check :consumer_key, :consumer_secret
+
       request_token = consumer.get_request_token
       puts "go to: #{request_token.authorize_url}"
       puts "get your OAuth PIN and enter it here:"
