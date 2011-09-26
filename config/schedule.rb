@@ -1,5 +1,5 @@
 every 30.minutes do
-  command "cd #{File.expand_path('../../', __FILE__)} && bin/facts-twitter"
+  command "cd #{File.expand_path('../..', __FILE__)} && bin/facts-twitter"
 end
 
 # Use this file to easily define all of your cron jobs.

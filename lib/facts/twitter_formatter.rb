@@ -24,6 +24,8 @@ module Facts
     # List of filters to apply to a fact's content. Applied in order.
     FILTERS = [
       Filters::HtmlEntities.new, 
+      Filters::Math.new, 
+      # Keep Markdown last, as it will perform the most extensive filtering
       Filters::Markdown.new, 
     ].freeze
 

@@ -7,7 +7,15 @@ module Facts
         # Replace Markdown links with just the link target
         str = str.gsub(/\[(.*?)\]\((.*?)\)/, '\2')
 
-        str
+        # Remove emphasis and strong emphasis -- it doesn't look very good on 
+        # Twitter and takes up previous character space
+        str = str.gsub(/\*\*(.*?)\*\*/, '\1')
+        str = str.gsub(/__(.*?)__/, '\1')
+        str = str.gsub(/\*(.*?)\*/, '\1')
+        str = str.gsub(/_(.*?)_/, '\1')
+
+        # Lastly, strip all HTML tags (which are allowed in Markdown)
+        str.gsub(/<\/?[^>]*>/, '').strip
       end
     end
   end
