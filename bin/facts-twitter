@@ -2,6 +2,8 @@
 
 $: << File.expand_path('lib')
 
+require 'timeout'
+
 require 'rubygems'
 require 'bundler'
 
@@ -18,4 +20,6 @@ Twitter.configure do |conf|
   conf.oauth_token_secret = Facts::Config.oauth_token_secret
 end
 
-Facts::Main.new.run
+Timeout.timeout(30) do
+  Facts::Main.new.run
+end
