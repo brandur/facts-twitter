@@ -30,8 +30,9 @@ module Facts
     ].freeze
 
     # Maximum content length before a URL, this is 140 (maximum length of a 
-    # Twitter message) minus 21 (space plus 20 characters for a t.co URL)
-    MAX_CONTENT_LENGTH = 119
+    # Twitter message) minus 21 (space plus 20 characters for a t.co URL) or 
+    # 22 with the https protocol
+    MAX_CONTENT_LENGTH = Config.http_api =~ /^https/ ? 118 : 119
 
     # Apply filters to optimally format content for display on Twitter.
     def filter(str)
