@@ -1,5 +1,5 @@
 module Facts
-  autoload :App,              'facts/app'
+  autoload :Config,           'facts/config'
   autoload :Filters,          'facts/filters'
   autoload :Main,             'facts/main'
   autoload :Setup,            'facts/setup'

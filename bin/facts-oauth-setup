@@ -9,16 +9,4 @@ Bundler.require
 
 require 'facts'
 
-# Bootstrap configuration
-begin
-  require_relative File.join('..', 'config', 'app')
-rescue LoadError
-  $stderr.puts "no configuration file!"
-  exit(1)
-end
-
-begin
-  Facts::Setup.new.run
-rescue Facts::ConfError => e
-  $stderr.puts "need configuration: #{e.conf}"
-end
+Facts::Setup.new.run

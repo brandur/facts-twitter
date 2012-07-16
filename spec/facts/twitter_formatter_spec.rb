@@ -14,9 +14,8 @@ describe Facts::TwitterFormatter do
       category.should_receive('name').and_return('Tall Buildings')
       category.should_receive('slug').and_return('tall-buildings')
     }
-    Facts::App.should_receive('conf').at_least(:once).and_return mockb('conf') { |conf|
-      conf.should_receive('facts_uri').and_return('http://my-facts.example.com')
-    }
+    Facts::Config.should_receive(:http_api).at_least(:once).
+      and_return('http://my-facts.example.com')
 
     formatted = @formatter.format(fact, category)
     formatted.should match(/^Tall Buildings:/)
@@ -37,9 +36,8 @@ is no way that this will fit in a Twitter message.
       category.should_receive('name').and_return('Ship of Theseus')
       category.should_receive('slug').and_return('ship-of-theseus')
     }
-    Facts::App.should_receive('conf').at_least(:once).and_return mockb('conf') { |conf|
-      conf.should_receive('facts_uri').and_return('http://my-facts.example.com')
-    }
+    Facts::Config.should_receive(:http_api).at_least(:once).
+      and_return('http://my-facts.example.com')
 
     formatted = @formatter.format(fact, category)
 
