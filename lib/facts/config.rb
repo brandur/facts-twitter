@@ -15,11 +15,11 @@ module Facts
     end
 
     def core_hours_only?
-      @core_hours_only ||= env("CORE_HOURS_ONLY") == true
+      @core_hours_only ||= env("CORE_HOURS_ONLY") == "true"
     end
 
     def dry_run?
-      @dry_run ||= env("DRY_RUN") || false
+      @dry_run ||= env("DRY_RUN") == "true"
     end
 
     def oauth_token

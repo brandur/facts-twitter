@@ -2,7 +2,7 @@ module Facts
   class Main
     def run
       Slides.log :run, core_hours_only: Config.core_hours_only?,
-        outside_core_hours: outside_core_hours? do
+        outside_core_hours: outside_core_hours?, dry_run: Config.dry_run? do
         # Only Tweet during core hours. Assumes UTC.
         run_without_logging if !Config.core_hours_only? || !outside_core_hours?
       end
