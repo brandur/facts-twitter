@@ -14,7 +14,7 @@ module Facts
 
       # Append a link back to the fact's category. No matter how long this 
       # link turns out to be, Twitter will shorten it to a 20 character t.co.
-      content += " #{Config.web}/categories/#{category.slug}"
+      content += " #{Config.web}/#{category.slug}"
 
       content
     end

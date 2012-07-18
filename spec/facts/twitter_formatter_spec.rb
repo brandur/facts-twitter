@@ -20,7 +20,7 @@ describe Facts::TwitterFormatter do
     formatted = @formatter.format(fact, category)
     formatted.should match(/^Tall Buildings:/)
     formatted.should include('Short fact content.')
-    formatted.should match(%r{https://my-facts.example.com/categories/tall-buildings$})
+    formatted.should match(%r{https://my-facts.example.com/tall-buildings$})
   end
 
   it "should truncate long content" do
@@ -49,7 +49,7 @@ is no way that this will fit in a Twitter message.
 
     # After replacing the long URL with a t.co (or a short 20 character 
     # equivalent), the message length should be exactly 140 characters
-    post_submit = formatted.gsub(%r{https://my-facts.example.com/categories/ship-of-theseus}, 'x' * 21)
+    post_submit = formatted.gsub(%r{https://my-facts.example.com/ship-of-theseus}, 'x' * 21)
     post_submit.length.should == 140
   end
 end
