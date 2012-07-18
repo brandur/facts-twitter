@@ -15,7 +15,7 @@ module Facts
     end
 
     def core_hours_only?
-      @core_hours_only ||= !!env("CORE_HOURS_ONLY") || false
+      @core_hours_only ||= !!env("CORE_HOURS_ONLY")
     end
 
     def dry_run?
