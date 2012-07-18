@@ -10,6 +10,10 @@ module Facts
 
     private
 
+    def api
+      @api ||= Excon.new(Config.api, instrumentor: Facts::ExconInstrumentor.new)
+    end
+
     def decode(fact_hash)
       category_hash = fact_hash['category']
       fact     = Struct::Fact.new(fact_hash['content'])
@@ -23,15 +27,11 @@ module Facts
 
     def run_without_logging
       # Ask the configured Facts installation for a random fact
-      uri = URI.parse("#{Config.api}/facts/random")
-      http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = true if uri.scheme == "https"
-      req = Net::HTTP::Get.new(uri.path)
-      rsp = http.request(req)
+      response = api.get(path: "/facts/random", expects: 200)
 
       # Decode the response to usable fact and category structs for easy 
       # digestion by the rest of the program
-      facts = MultiJson.decode(rsp.body)
+      facts = MultiJson.decode(response.body)
       fact, category = decode(facts.first)
 
       # Assemble a message that can be nicely displayed on Twitter

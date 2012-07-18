@@ -1,7 +1,6 @@
 source :rubygems
 
-#gemspec
-
+gem 'excon',        '~> 0.15.3'
 gem 'htmlentities', '~> 4.3.0'
 gem 'multi_json',   '~> 1.0.3'
 gem 'oauth',        '~> 0.4.5'
