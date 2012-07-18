@@ -10,11 +10,11 @@ module Facts
       content = filter(content)
 
       # Constrain content to a length acceptable by Twitter
-      content = content[0...MAX_CONTENT_LENGTH-1] + '…' if content.length > MAX_CONTENT_LENGTH
+      content = content[0...max_content_length-1] + '…' if content.length > max_content_length
 
       # Append a link back to the fact's category. No matter how long this 
       # link turns out to be, Twitter will shorten it to a 20 character t.co.
-      content += " #{Config.http_api}/categories/#{category.slug}"
+      content += " #{Config.web}/categories/#{category.slug}"
 
       content
     end
@@ -29,17 +29,19 @@ module Facts
       Filters::Markdown.new, 
     ].freeze
 
-    # Maximum content length before a URL, this is 140 (maximum length of a 
-    # Twitter message) minus 21 (space plus 20 characters for a t.co URL) or 
-    # 22 with the https protocol
-    MAX_CONTENT_LENGTH = Config.http_api =~ /^https/ ? 118 : 119
-
     # Apply filters to optimally format content for display on Twitter.
     def filter(str)
       FILTERS.each do |f|
         str = f.filter(str)
       end
-      str  
+      str
+    end
+
+    # Maximum content length before a URL, this is 140 (maximum length of a 
+    # Twitter message) minus 21 (space plus 20 characters for a t.co URL) or 
+    # 22 with the https protocol
+    def max_content_length
+      @@max_content_length ||= Config.web =~ /^https/ ? 118 : 119
     end
   end
 end

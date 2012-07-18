@@ -14,7 +14,7 @@ describe Facts::TwitterFormatter do
       category.should_receive('name').and_return('Tall Buildings')
       category.should_receive('slug').and_return('tall-buildings')
     }
-    Facts::Config.should_receive(:http_api).at_least(:once).
+    Facts::Config.should_receive(:web).at_least(:once).
       and_return('https://my-facts.example.com')
 
     formatted = @formatter.format(fact, category)
@@ -36,7 +36,7 @@ is no way that this will fit in a Twitter message.
       category.should_receive('name').and_return('Ship of Theseus')
       category.should_receive('slug').and_return('ship-of-theseus')
     }
-    Facts::Config.should_receive(:http_api).at_least(:once).
+    Facts::Config.should_receive(:web).at_least(:once).
       and_return('https://my-facts.example.com')
 
     formatted = @formatter.format(fact, category)

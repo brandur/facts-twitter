@@ -2,8 +2,8 @@ module Facts
   module Config
     extend self
 
-    def http_api
-      @http_api ||= env!("FACTS_HTTP_API")
+    def api
+      @api ||= env!("FACTS_API")
     end
 
     def consumer_key
@@ -24,6 +24,10 @@ module Facts
 
     def oauth_token_secret
       @oauth_token_secret ||= env!("OAUTH_TOKEN_SECRET")
+    end
+
+    def web
+      @web ||= env!("FACTS_WEB")
     end
 
     private

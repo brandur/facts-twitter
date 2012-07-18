@@ -6,6 +6,8 @@ A simple program that pulls a random fact from a Facts installation, and pushes 
 Setup
 -----
 
+Point `FACTS_API` to your Facts API.
+
 Go to https://dev.twitter.com/ and register a new application. Get an application key and secret and export them as `CONSUMER_KEY` and `CONSUMER_SECRET` respectively (or use `heroku config:add` on Heroku).
 
 Install dependencies through Bundler:

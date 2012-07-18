@@ -2,7 +2,7 @@ module Facts
   class Main
     def run
       # Ask the configured Facts installation for a random fact
-      uri = URI.parse("#{Config.http_api}/facts/random")
+      uri = URI.parse("#{Config.api}/facts/random")
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true if uri.scheme == "https"
       req = Net::HTTP::Get.new(uri.path)
