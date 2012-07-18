@@ -14,6 +14,10 @@ module Facts
       @consumer_secret ||= env!("CONSUMER_SECRET")
     end
 
+    def core_hours_only?
+      @core_hours_only ||= !!env("CORE_HOURS_ONLY") || false
+    end
+
     def dry_run?
       @dry_run ||= env("DRY_RUN") || false
     end

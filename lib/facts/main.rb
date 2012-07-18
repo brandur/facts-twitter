@@ -1,6 +1,10 @@
 module Facts
   class Main
     def run
+      # Only Tweet during core hours. Assumes UTC.
+      return if Config.core_hours_only? &&
+        !(7..19).include?((Time.now.utc.hour-6) % 24)
+
       # Ask the configured Facts installation for a random fact
       uri = URI.parse("#{Config.api}/facts/random")
       http = Net::HTTP.new(uri.host, uri.port)
