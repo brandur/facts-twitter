@@ -4,8 +4,9 @@ module Facts
     # clean display on Twitter.
     class Markdown
       def filter(str)
-        # Replace Markdown links with just the link target
-        str = str.gsub(/\[(.*?)\]\((.*?)\)/, '\2')
+        # Replace external links with just the link text (processes both
+        # internal and external links)
+        str = str.gsub(/\[(.*?)\]\((.*?)\)/, '\1')
 
         # Remove emphasis and strong emphasis -- it doesn't look very good on 
         # Twitter and takes up previous character space

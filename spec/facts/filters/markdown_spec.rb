@@ -6,7 +6,7 @@ describe Facts::Filters::Markdown do
   end
 
   it "should replace links with just the link target" do
-    @filter.filter("A link to [example.com](http://example.com).").should == "A link to http://example.com."
+    @filter.filter("A link to [example.com](http://example.com).").should == "A link to example.com."
   end
 
   it "should remove emphasis" do
