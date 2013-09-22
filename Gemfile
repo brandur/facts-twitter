@@ -1,13 +1,15 @@
-source :rubygems
+source "https://rubygems.org"
 
-gem 'excon',        '~> 0.15.3'
-gem 'htmlentities', '~> 4.3.0'
-gem 'multi_json',   '~> 1.0.3'
-gem 'oauth',        '~> 0.4.5'
+ruby "2.0.0"
+
+gem 'excon'
+gem 'htmlentities'
+gem 'multi_json'
+gem 'oauth'
 gem 'slides'
-gem 'twitter',      '~> 1.7.1'
+gem 'twitter'
 
 group :development, :testing do
-  gem 'rake',       '~> 0.9.2'
-  gem 'rspec',      '~> 2.6'
+  gem 'rake'
+  gem 'rspec'
 end
