@@ -1,8 +1,6 @@
-module Facts
-  autoload :Config,            'facts/config'
-  autoload :Filters,           'facts/filters'
-  autoload :ExconInstrumentor, 'facts/excon_instrumentor'
-  autoload :Main,              'facts/main'
-  autoload :Setup,             'facts/setup'
-  autoload :TwitterFormatter,  'facts/twitter_formatter'
-end
+require_relative 'facts/config'
+require_relative 'facts/filters'
+require_relative 'facts/excon_instrumentor'
+require_relative 'facts/main'
+require_relative 'facts/setup'
+require_relative 'facts/twitter_formatter'
